@@ -1,10 +1,9 @@
-FROM nodejs:latest
+FROM node:latest
 
-# Out port mapping 
-EXPOSE 3000
+RUN apt-get update
+
+WORKDIR /usr/src/app/
 
 # The execute command while run docker
-# Run open process to protect docker exited
-# CMD [ "executable" ]
-
-CMD ["sh", "-c", "tail -f /dev/null"]
+CMD ["echo", "Hello World"]
+#CMD ["sh", "-c", "tail -f /dev/null"]
