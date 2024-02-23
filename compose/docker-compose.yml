@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        PASSWORD: abcde
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - database
+    networks:
+      - app
+    restart: always
+  database:
+    image: mysql:8.0
+    environment:
+      # - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+    volumes:
+      - ./database/data:/var/lib/mysql
+    networks:
+      - app
+
+networks:
+  app:

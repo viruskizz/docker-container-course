@@ -41,3 +41,8 @@ docker run example:latest
 ```sh
 docker run -it --rm --name test basic:latest
 ```
+
+- Run container
+```sh
+docker run -it --rm --name test -v ./ /usr/app/src basic:latest
+```
