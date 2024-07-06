@@ -1,0 +1,6 @@
+.DS_Store
+.dockerignore
+script.sh
+Dockerfile
+/temp
+*.password

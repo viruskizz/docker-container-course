@@ -2,13 +2,16 @@ FROM node:latest
 
 RUN apt-get update
 
-RUN apt-get install -y vim
+RUN apt-get install -y \
+    vim \
+    default-mysql-client \
+    iputils-ping
 
 WORKDIR /usr/src/app/
 
 COPY src .
 
-ADD https://cdn.discordapp.com/attachments/1130381385958445077/1130381486516871348/Araiva_Leonhart_-_Circle.png public/araiva.png
+# ADD https://cdn.discordapp.com/attachments/1130381385958445077/1130381486516871348/Araiva_Leonhart_-_Circle.png public/araiva.png
 
 RUN npm install
 

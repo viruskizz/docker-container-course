@@ -1,14 +1,20 @@
 FROM node:latest
 
-RUN apt-get update
+ARG ARG_NAME
 
-RUN apt-get install -y wordpress
+ENV NAME ${ARG_NAME}
+
+RUN apt-get update
 
 RUN apt-get install -y vim
 
-
 WORKDIR /usr/src/app/
 
+COPY start.sh .
+
+RUN echo "hello $NAME" > test.txt
+
 # The execute command while run docker
-# CMD ["echo", "Hello World"]
-CMD ["sh", "-c", "tail -f /dev/null"]
+# CMD ["cat", "test.txt"]
+CMD ["sh", "start.sh"]
+# CMD ["sh", "-c", "tail -f /dev/null"]

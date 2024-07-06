@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src/index.js:/usr/src/app/index.js
+      - ./src/public:/usr/src/app/public
+    networks:
+      - app
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    ports:
+      - 3306:3306
+    networks:
+      - app
+
+networks:
+  app:
